@@ -1,6 +1,6 @@
 from selenium import webdriver
 
-LINK = "http://suninjuly.github.io/registration1.html"
+LINK = "http://suninjuly.github.io/registration2.html"
 
 # test values
 VALUE = 'Мой ответ'
@@ -29,6 +29,10 @@ def run():
         browser.get(LINK)
         fill_form(browser)
         click_submit(browser)
+        welcome_text_elt = browser.find_element_by_tag_name("h1")
+        welcome_text = welcome_text_elt.text
+        assert "Congratulations! You have successfully registered!" == welcome_text
+
     finally:
         if bug == 0:
             report = 'без ошибок'
